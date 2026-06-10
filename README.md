@@ -10,3 +10,4 @@ This is a full-stack e-commerce web application built using Django and React, la
 
 ## 📅 Progress Log
 - Day 0: Project setup and GitHub initialization
+- Day 1: Django project setup and initial server run
