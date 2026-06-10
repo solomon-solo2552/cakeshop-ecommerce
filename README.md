@@ -20,3 +20,4 @@ This is a full-stack e-commerce web application built using Django and React, la
 
          Completed full CRUD operations (GET, POST, PUT, DELETE)
 
+- Day 3: Setup React frontend and fetched products from Django API
