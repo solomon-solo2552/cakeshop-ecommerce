@@ -11,8 +11,12 @@ This is a full-stack e-commerce web application built using Django and React, la
 ## 📅 Progress Log
 - Day 0: Project setup and GitHub initialization
 - Day 1: Django project setup and initial server run
-- Day 2: Created Product model and admin panel setup,
+- Day 2: 
+        Created Product model and admin panel setup,
+
          Created Product API using Django REST Framework,
 
-        Added POST API and product detail API
+         Added POST API and product detail API,
+
+         Completed full CRUD operations (GET, POST, PUT, DELETE)
 

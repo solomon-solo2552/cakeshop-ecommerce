@@ -9,7 +9,14 @@ from .models import Product
 from .serializers import ProductSerializer
 
 
-# GET all products + POST new product
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Product
+from .serializers import ProductSerializer
+
+
+# GET + POST
 @api_view(['GET', 'POST'])
 def product_list(request):
     if request.method == 'GET':
@@ -25,13 +32,25 @@ def product_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# GET single product
-@api_view(['GET'])
+# GET + PUT + DELETE
+@api_view(['GET', 'PUT', 'DELETE'])
 def product_detail(request, pk):
     try:
         product = Product.objects.get(id=pk)
     except Product.DoesNotExist:
         return Response({"error": "Product not found"}, status=404)
 
-    serializer = ProductSerializer(product)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        serializer = ProductSerializer(product)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ProductSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        product.delete()
+        return Response({"message": "Deleted successfully"})
